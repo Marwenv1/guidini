@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+    <h1>Reservation</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>date</th>
+            <td>{{ reservation.date|date }}</td>
+        </tr>
+        <tr>
+            <th>duree</th>
+            <td>{{ reservation.duree }}</td>
+        </tr>
+        <tr>
+            <th>etat</th>
+            <td>{{ reservation.etat }}</td>
+        </tr>
+        <tr>
+            <th>payement</th>
+            {% if reservation.payement==false %}
+                <td> en cours </td>
+            {% elseif reservation.payement==true %}
+                <td> payé </td>
+            {% endif %}
+        </tr>
+        <tr>
+            <th>user</th>
+            <td>{{ reservation.user.nom }} {{ reservation.user.prenom }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('resreservation') }}">back to list</a>
+
+    <a href="{{ path('resreservationEdit', {'id': reservation.id}) }}">edit</a>
+
+    <a href="{{ path('resreservationDelete', {'id': reservation.id}) }}">delete</a>
+{% endblock %}

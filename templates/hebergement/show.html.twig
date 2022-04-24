@@ -1,0 +1,33 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Hebergement{% endblock %}
+
+{% block body %}
+    <h1>Hebergement</h1>
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>type</th>
+            <td>{{ hebergement.type }}</td>
+        </tr>
+        <tr>
+            <th>prenom</th>
+            <td>{{ hebergement.nom }}</td>
+        </tr>
+        <tr>
+            <th>adresse</th>
+            <td>{{ hebergement.adresse }}</td>
+        </tr>
+        <tr>
+            <th>prix Par Nuit</th>
+            <td>{{ hebergement.prixParNuit }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('dsdhebergementyyAdmin') }}">back to list</a>
+
+    <a class="btn btn-success" href="{{ path('dsdhebergementEdit', {'id': hebergement.id}) }}">edit</a>
+
+    <a class="btn btn-danger" href="{{ path('dsdhebergementDelete', {'id': hebergement.id}) }}">delete</a>
+{% endblock %}
